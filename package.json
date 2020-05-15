@@ -1,0 +1,12 @@
+{
+  "name": "mgnl-tools",
+  "version": "0.0.10",
+  "description": "Opinionated set of tools for developing Magnolia SPAs",
+  "keywords": [
+    "spa",
+    "magnolia"
+  ],
+  "license": "MIT",
+  "author": "Bartosz Staryga <bartosz.staryga@magnolia-cms.com>",
+  "main": "index.js"
+}
