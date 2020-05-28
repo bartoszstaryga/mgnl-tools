@@ -1,6 +1,6 @@
 {
   "name": "mgnl-tools",
-  "version": "0.0.10",
+  "version": "0.1.0",
   "description": "Opinionated set of tools for developing Magnolia SPAs",
   "keywords": [
     "spa",

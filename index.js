@@ -9,6 +9,7 @@ var config = require('../../src/magnolia.config');
 
 var nodeName = config.default.mgnlTools.nodeName;
 var pageUrl = config.default.mgnlTools.pageUrl;
+var campaignUrl = config.default.mgnlTools.campaignUrl;
 var templateDefinitionsUrl = config.default.mgnlTools.templateDefinitionsUrl;
 var languages = config.default.mgnlTools.languages.split(' ');
 var inMgnlEditor =
@@ -62,7 +63,14 @@ var mgnlTools = {
   },
   getPage: async function getPage() {
     var currentLanguage = mgnlTools.getCurrentLanguage();
-    var url = pageUrl + nodeName + window.location.pathname.replace(new RegExp('(.*' + nodeName + '|.html)', 'g'), '');
+    var pathname = window.location.pathname;
+    var url;
+
+    if (pathname.startsWith('/campaign/')) {
+      url = campaignUrl + pathname.replace(new RegExp('(.*/campaign|.html)', 'g'), '');
+    } else {
+      url = pageUrl + nodeName + pathname.replace(new RegExp('(.*' + nodeName + '|.html)', 'g'), '');
+    }
 
     if (currentLanguage !== languages[0]) {
       url = removeCurrentLanguage(url, currentLanguage);

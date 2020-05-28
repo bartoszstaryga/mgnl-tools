@@ -30,6 +30,7 @@ const config = {
   mgnlTools: {
     nodeName: process.env.REACT_APP_MGNL_NODE_NAME,
     pageUrl: process.env.REACT_APP_MGNL_API_PAGES,
+    campaignUrl: process.env.REACT_APP_MGNL_API_CAMPAIGN,
     templateDefinitionsUrl: process.env.REACT_APP_MGNL_API_TEMPLATE_DEFINITION,
     languages: process.env.REACT_APP_MGNL_LANGUAGES,
   },
@@ -40,6 +41,7 @@ export default config;
 
 - nodeName - node name of your site e.g. **/home**
 - pageUrl - rest endpoint for fetching pages e.g. **http://mgnl.io/.rest/pages**
+- campaignUrl - rest endpoint for fetching campaigns from Campaign Manager e.g. **http://mgnl.io/.rest/campaign-manager**
 - templateDefinitionsUrl - rest endpoint for fetching template definitions e.g. **http://mgnl.io/.rest/templateDefinition/v1**
 - languages - space separated list of available language codes, first will be used as default e.g. **en de es**
 
@@ -58,6 +60,8 @@ import mgnlTools from 'mgnl-tools';
 ### `getPage`
 
 Fetches the page and template definitions. Returns everything that is needed for editable pages components in Magnolia.
+
+Auto detect if preview inside Magnolia is in Campaign Manager and then fetches from Campaign Manager endpoint.
 
 ```javascript
 import mgnlTools from 'mgnl-tools';
