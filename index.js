@@ -22,6 +22,9 @@ var removeCurrentLanguage = function removeCurrentLanguage(string, currentLangua
 };
 
 var mgnlTools = {
+  isInMgnlEditor: function isInMgnlEditor() {
+    return inMgnlEditor;
+  },
   getLanguages: function getLanguages() {
     return languages;
   },
@@ -51,8 +54,16 @@ var mgnlTools = {
 
     window.location.href = window.location.origin + pathname + window.location.search;
   },
-  getRouterBasename: function getRouterBasename() {
+  getRouterBasename: function getRouterBasename(apps) {
     var pathname = window.location.pathname;
+
+    if (apps) {
+      apps.forEach(function (app) {
+        if (pathname.indexOf(app) > -1) {
+          return pathname.replace(new RegExp(app + '.*'), '') + app;
+        }
+      });
+    }
 
     if (pathname.indexOf(nodeName) > -1) {
       return pathname.replace(new RegExp(nodeName + '.*'), '') + nodeName;
@@ -74,8 +85,9 @@ var mgnlTools = {
 
     if (currentLanguage !== languages[0]) {
       url = removeCurrentLanguage(url, currentLanguage);
-      url += '?lang=' + currentLanguage;
     }
+
+    url += '?lang=' + currentLanguage;
 
     var contentRes = await fetch(url);
     var content = await contentRes.json();
