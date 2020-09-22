@@ -10,6 +10,7 @@ var config = require('../../src/magnolia.config');
 var nodeName = config.default.mgnlTools.nodeName;
 var pageUrl = config.default.mgnlTools.pageUrl;
 var campaignUrl = config.default.mgnlTools.campaignUrl;
+var customerJourneyUrl = config.default.mgnlTools.customerJourneyUrl;
 var templateDefinitionsUrl = config.default.mgnlTools.templateDefinitionsUrl;
 var languages = config.default.mgnlTools.languages.split(' ');
 var inMgnlEditor =
@@ -79,6 +80,8 @@ var mgnlTools = {
 
     if (pathname.startsWith('/campaign/')) {
       url = campaignUrl + pathname.replace(new RegExp('(.*/campaign|.html)', 'g'), '');
+    } else if (pathname.startsWith('/customer-journey/')) {
+      url = customerJourneyUrl + pathname.replace(new RegExp('(.*/customer-journey|.html)', 'g'), '');
     } else {
       url = pageUrl + nodeName + pathname.replace(new RegExp('(.*' + nodeName + '|.html)', 'g'), '');
     }
