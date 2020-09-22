@@ -11,6 +11,7 @@ var nodeName = config.default.mgnlTools.nodeName;
 var pageUrl = config.default.mgnlTools.pageUrl;
 var campaignUrl = config.default.mgnlTools.campaignUrl;
 var customerJourneyUrl = config.default.mgnlTools.customerJourneyUrl;
+var mobilePageUrl = config.default.mgnlTools.mobilePageUrl;
 var templateDefinitionsUrl = config.default.mgnlTools.templateDefinitionsUrl;
 var languages = config.default.mgnlTools.languages.split(' ');
 var inMgnlEditor =
@@ -82,6 +83,8 @@ var mgnlTools = {
       url = campaignUrl + pathname.replace(new RegExp('(.*/campaign|.html)', 'g'), '');
     } else if (pathname.startsWith('/customer-journey/')) {
       url = customerJourneyUrl + pathname.replace(new RegExp('(.*/customer-journey|.html)', 'g'), '');
+    } else if (pathname.startsWith('/mobile-page/')) {
+      url = mobilePageUrl + pathname.replace(new RegExp('(.*/mobile-page|.html)', 'g'), '');
     } else {
       url = pageUrl + nodeName + pathname.replace(new RegExp('(.*' + nodeName + '|.html)', 'g'), '');
     }
