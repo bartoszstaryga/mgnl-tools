@@ -77,6 +77,7 @@ var mgnlTools = {
   getPage: async function getPage() {
     var currentLanguage = mgnlTools.getCurrentLanguage();
     var pathname = window.location.pathname;
+    var search = window.location.search.replace(/^\?/, '&');
     var url;
 
     if (pathname.startsWith('/campaign/')) {
@@ -94,6 +95,7 @@ var mgnlTools = {
     }
 
     url += '?lang=' + currentLanguage;
+    url += search;
 
     var contentRes = await fetch(url);
     var content = await contentRes.json();
